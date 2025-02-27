@@ -53,7 +53,14 @@ private:
 public:
     Tree() : root(nullptr) {}
 
-
+    void printTreeStructure() const {
+        std::cout << "\nTree Structure:\n";
+        std::cout << "        Home\n";
+        std::cout << "       /    \\\n";
+        std::cout << "   Hero     About\n";
+        std::cout << "   /  \\      /    \\\n";
+        std::cout << "Feat Price  Team Contact\n\n";
+    }
 
     // Function to create a general tree
     // Time complexity: O(m * n), where m is the number of nodes and n is the height of the tree
@@ -128,7 +135,7 @@ int main() {
 
     // Create the tree with input validation
     tree.createMockWebGraph();
-
+    tree.printTreeStructure();
 
     // Menu for traversal options
     int choice;

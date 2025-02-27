@@ -42,98 +42,20 @@ public:
 
     // Function to create a general tree
     // Time complexity: O(m * n), where m is the number of nodes and n is the height of the tree
-    void createTree(int min_height, int min_nodes, int min_children) {
+     void createMockWebGraph() {
+        root = new Node("A"); // Root page
+        Node* B = new Node("B");
+        Node* C = new Node("C");
+        Node* D = new Node("D");
+        Node* E = new Node("E");
+        Node* F = new Node("F");
+        Node* G = new Node("G");
 
-        do {
-            // Read the number of nodes from the user
-            std::cout << "Enter the number of nodes (>= " << min_nodes << "): ";
-            std::cin >> num_nodes;
-
-            // Validate user input
-            if (std::cin.fail() || num_nodes < min_nodes) {
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                std::cout << "Invalid input. Please enter a non-negative integer greater than or equal to " << min_nodes << ".\n";
-            } else {
-                break;
-            }
-        } while (nodeCounter < num_nodes && nodeHeight <= min_height);
-
-        std::string value;
-        std::cout << "Enter the value for the root node: ";
-        std::cin >> value;
-        root = new Node(value);
-
-
-        std::queue<Node*> levelQueue;
-        levelQueue.push(root);
-
-        while (!levelQueue.empty()) {
-            Node* current = levelQueue.front();
-            levelQueue.pop();
-
-            int numChildren;
-            do {
-                if(nodeCounter >= num_nodes && nodeHeight > min_height ){
-                // Inform the user about the conditions being met
-                std::cout << std::endl << "The conditions are met! Press O to stop or " << std::endl;
-                }
-
-
-                std::cout << "Enter the number of children for node " << current->data << " (>= " << min_children << "): ";
-                std::cin >> numChildren;
-                nodeHeight++; // Increment the counter for the height
-
-
-                std::cout << std::endl<< "Current nodeCounter: " << nodeCounter << std::endl;
-                std::cout << "Current nodeHeight: " << nodeHeight << std::endl;
-
-
-
-                if (std::cin.fail() || numChildren < min_children) {
-                    std::cin.clear();
-                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                    std::cout << "Invalid input. Please enter a non-negative integer greater than or equal to " << min_children << ".\n";
-                } else {
-                    break;
-                }
-                } while (nodeCounter < num_nodes && nodeHeight <= min_height);
-
-
-
-
-
-
-                if (nodeCounter >= num_nodes && nodeHeight > min_height && numChildren == 0) {
-
-                std::cout << "Breaking out of the loop as nodeCounter >= num_nodes and nodeHeight > min_height.\n" << std::endl;
-                break;
-            }
-
-            for (int i = 0; i < numChildren; ++i) {
-                std::string childValue;
-                do {
-                    std::cout << "Enter the value for child " << i + 1 << " of node " << current->data << ": ";
-
-                    nodeCounter++;  // Increment the counter for the root node
-                    std::cin >> childValue;
-
-                    if (std::cin.fail() || !std::all_of(childValue.begin(), childValue.end(), ::isalnum)) {
-                        std::cin.clear();
-                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                        std::cout << "Invalid input. Please enter a string containing only letters and numbers.\n";
-                    } else {
-                        break;
-                    }
-                } while (nodeCounter < num_nodes && nodeHeight <= min_height);
-
-                Node* child = new Node(childValue);
-                current->children.push_back(child);
-                levelQueue.push(child);
-            }
-        }
+        // Constructing the tree
+        root->children = {B, C};
+        B->children = {D, E};
+        C->children = {F, G};
     }
-
     // Function to get the root node
     // Time complexity: O(1)
     Node* getRoot() const {
@@ -180,6 +102,7 @@ public:
     }
 };
 
+
 int main() {
     const int min_height = 3;
     const int min_nodes = 20;
@@ -189,7 +112,7 @@ int main() {
 
 
     // Create the tree with input validation
-    tree.createTree(min_height, min_nodes, min_children);
+    tree.createMockWebGraph();
 
 
     // Menu for traversal options

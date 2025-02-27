@@ -7,6 +7,21 @@
 #include <cctype>
 #include <algorithm>
 
+// Page Home (Root)
+// Links to Page Hero and Page About
+// Page Hero
+// Links to Page Features and Page Pricing
+// Page About
+// Links to Page Team and Page Contact
+// Page Features
+// Links to Page Pricing and Page Team
+// Page Pricing
+// Links to Page Team and Page Contact
+// Page Team
+// Links to Page Contact
+// Page Contact
+// No further links (Leaf nodes)
+
 class Node {
 public:
     std::string data;
@@ -43,18 +58,18 @@ public:
     // Function to create a general tree
     // Time complexity: O(m * n), where m is the number of nodes and n is the height of the tree
      void createMockWebGraph() {
-        root = new Node("A"); // Root page
-        Node* B = new Node("B");
-        Node* C = new Node("C");
-        Node* D = new Node("D");
-        Node* E = new Node("E");
-        Node* F = new Node("F");
-        Node* G = new Node("G");
+        root = new Node("Home"); // Root page
+        Node* Hero = new Node("Hero");
+        Node* About = new Node("About");
+        Node* Features = new Node("Features");
+        Node* Pricing = new Node("Pricing");
+        Node* Team = new Node("Team");
+        Node* Contact = new Node("Contact");
 
         // Constructing the tree
-        root->children = {B, C};
-        B->children = {D, E};
-        C->children = {F, G};
+        root->children = {Hero, About};
+        Hero->children = {Features, Pricing};
+        About->children = {Team, Contact};
     }
     // Function to get the root node
     // Time complexity: O(1)

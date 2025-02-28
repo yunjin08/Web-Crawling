@@ -1,4 +1,12 @@
+// Group 11
 //Tree Traversal
+//Members:
+//- Donaire
+//- Catarina
+//- Oacan
+//- Labiste
+//- Sagrado
+
 
 #include <iostream>
 #include <queue>
